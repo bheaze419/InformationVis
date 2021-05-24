@@ -75,8 +75,7 @@ const plot1Div = document.getElementById("vis1");
 const plot2Div = document.getElementById("vis2");
 const plot3Div = document.getElementById("vis3");
 var state = "Estonia";
-
-
+var counter = 0;
 
 function plotski(csv_data) {
     let country_data = csv_data.filter(d => d.country == state);
@@ -114,156 +113,84 @@ function plotski(csv_data) {
             y: extension_y,
             mode: "lines",
             name: state + " child mortality prediction"
-        }]
-    switch (state) {
-        case 'Estonia':
-        counter++;
-        console.log(x + state);
-        Plotly.newPlot('vis1', trace1, layout1, config);
-        Plotly.newPlot('vis2', trace1, layout1, config);
-        // state = "Finland";
-        break;
-        case 'Finland':
-        counter++;
-        console.log(x + trace1);
-        Plotly.addTraces('vis1', trace1);
-        Plotly.addTraces('vis2', trace1);
-        // state = "Latvia";
-        break;
-        case 'Latvia':
-        counter++;
-        console.log(x + trace1);
-        Plotly.addTraces('vis1', trace1);
-        Plotly.addTraces('vis2', trace1);
-        //state = "Russian";
-        break;
-        case 'Russian':
-        counter++;
-        console.log(x + trace1);
-        Plotly.addTraces('vis1', trace1);
-        Plotly.addTraces('vis2', trace1);
-        //state = "Baltic states";
-        break;
-        case 'Baltic states':
-        counter++;
-        console.log(x + trace1);
-        Plotly.addTraces('vis2', trace1);
-        state = "lithuania";
-        break;
-        case 'Lithuania':
-        console.log(x + trace1);
-        Plotly.addTraces('vis1', trace1);
-        Plotly.addTraces('vis2', trace1);
         }
-    switch (counter) {
+    ]
+    switch (counter) { 
         case 0:
             Plotly.newPlot('vis1', trace1, layout1, config);
             Plotly.newPlot('vis2', trace1, layout1, config);
-            state = "Latvia";
+            state = "Finland";
             break;
-
         case 1:
-            Plotly.addTraces('vis2', trace42);
-            state = "Lithuania";
+            Plotly.addTraces('vis1', trace1);
+            Plotly.addTraces('vis2', trace1);
+            state = "Latvia";
             break;
         case 2:
-            Plotly.addTraces('vis2', trace42);
-            //Baltic states takes from average of Estonia, Latvia, Lithuania 
-            state = "Latvia";
+            Plotly.addTraces('vis1', trace1);
+            Plotly.addTraces('vis2', trace1);
+            state = "Lithuania";
             break;
         case 3:
-            Plotly.addTraces('vis2', trace42);
-            state = "Finland"
+            Plotly.addTraces('vis1', trace1);
+            Plotly.addTraces('vis2', trace1);
+            state = "Russia";
             break;
         case 4:
-            Plotly.addTraces('vis2', trace42);
-            state = "Baltic states"
-        }   
+            Plotly.addTraces('vis2', trace1);
+            state = "Baltic states";
+            break;
+        case 5:
+            Plotly.addTraces('vis1', trace1);
+            Plotly.addTraces('vis2', trace1);
+            break;
+
+    }
     counter++;
+    console.log("counter: " + counter + "state :" + state );
+}
+switch (state) {
+    case 'Estonia':
+        Plotly.d3.csv("mortality.csv", plotski);
+        break;
+    case 'Finland':
+        //counter++;
+        Plotly.d3.csv("mortality.csv", plotski);
+        break;
+    case 'Latvia':
+        //counter++;
+        Plotly.d3.csv("mortality.csv", plotski);
+        break;
+    case 'Lithuania':
+        //counter++;
+        Plotly.d3.csv("mortality.csv", plotski);
+        break;
+    case 'Russia':
+        //counter++;
+        Plotly.d3.csv("mortality.csv", plotski);
+        break;
+    case 'Baltic states':
+        //counter++;
+        Plotly.d3.csv("mortality.csv", plotski);
+        break;
+        
 }
 
-    // var traceAnn = {
-    //     x: [1990, 1990],
-    //     y: [0, 60],
-    //     mode: ['lines+markers+text'],
-    //     name: ['Lines, Markers and Text'],
-    //     text: ['End of Soviet Occupation Of Baltic Sates'],
-    //     textposition: ['top'],
-    //     type: ['scatter']
-    // }
-    // // var annTrace = [traceAnn]
-   // Plotly.addTraces('vis1', traceAnn);
-   // Plotly.addTraces('vis2', annTrace);
 
 
+// var traceAnn = {
+//     x: [1990, 1990],
+//     y: [0, 60],
+//     mode: ['lines+markers+text'],
+//     name: ['Lines, Markers and Text'],
+//     text: ['End of Soviet Occupation Of Baltic Sates'],
+//     textposition: ['top'],
+//     type: ['scatter']
+// }
+// // var annTrace = [traceAnn]
+// Plotly.addTraces('vis1', traceAnn);
+// Plotly.addTraces('vis2', annTrace);
 
-/* function plotski420(csv_data) {
-    state = "Estonia";
-    for (let x = 0; x > 5; x++) {
-        let country_data = csv_data.filter(d => d.country == state);
-        let mortality_data = country_data.map(d => Number(d.mortality))
-        let min_mortality = Math.min(...mortality_data)
-        let max_mortality = Math.max(...mortality_data)
-
-        //This regression library needs values stored in arrays
-        //We are using the strech function to normalise our data
-        let regression_data = country_data.map(d => [stretch(d.year, 1965, 2017, 0, 1),
-            stretch(d.mortality, min_mortality, max_mortality, 0, 1)
-        ])
-        //Here is where we train our regressor, experiment with the order value
-        let regression_result = regression.polynomial(regression_data, {
-            order: 4
-        });
-        let extension_x = [];
-        let extension_y = [];
-        for (let year = 2017; year < 2025; year++) {
-            //We've still got to work in the normalised scale
-            let prediction = regression_result.predict(stretch(year, 1950, 2017, 0, 1))[1]
-
-            extension_x.push(year);
-            //Make sure to un-normalise for displaying on the plot
-            extension_y.push(stretch(prediction, 0, 1, min_mortality, max_mortality));
-        }
-
-        var trace42 = [{
-                x: country_data.map(d => d.year),
-                y: country_data.map(d => d.mortality),
-                mode: "lines",
-                name: state + " child mortality"
-            },
-            {
-                x: extension_x,
-                y: extension_y,
-                mode: "lines",
-                name: state + " child mortality prediction"
-            }
-        ]
-        switch (counter) {
-            case 0:
-                Plotly.newPlot('vis2', trace42, layout1, config);
-                state = "Latvia";
-                break;
-
-            case 1:
-                Plotly.addTraces('vis2', trace42);
-                state = "Lithuania";
-                break;
-            case 2:
-                Plotly.addTraces('vis2', trace42);
-                //Baltic states takes from average of Estonia, Latvia, Lithuania 
-                state = "Latvia";
-                break;
-            case 3:
-                Plotly.addTraces('vis2', trace42);
-                state = "Finland"
-                break;
-            case 4:
-                Plotly.addTraces('vis2', trace42);
-                state = "Baltic states"
-        }
-        counter++;
-    }
-} */
 
 //This stretch function is actually just the map function from p5.js
 function stretch(n, start1, stop1, start2, stop2) {
