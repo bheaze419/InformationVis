@@ -75,30 +75,34 @@ const plot1Div = document.getElementById("vis1");
 const plot2Div = document.getElementById("vis2");
 const plot3Div = document.getElementById("vis3");
 var state = "Estonia";
-var round = false;
 
 for (let x = 0; x < 6; x++) {
     // console.log(state + x);
     switch (x) {
         case 0:
             Plotly.d3.csv("mortality.csv", plotski);
+            state = "Finland";
             break;
         case 1:
-            console.log(state + counter);
+            console.log(state);
             Plotly.d3.csv("mortality.csv", plotski);
+            state = "Latvia";
             break;
         case 2:
-            console.log(state + counter);
+            console.log(state );
             Plotly.d3.csv("mortality.csv", plotski);
+            state = "Russian";
             break;
-        case 2:
-            console.log(state + counter);
+        case 3:
+            console.log(state );
             Plotly.d3.csv("mortality.csv", plotski);
+            state = "Baltic states";
             break;
-        case 'Baltic states':
+        case 4:
             //Baltic states takes from average of Estonia, Latvia, Lithuania 
-            console.log(state + counter);
+            console.log(state );
             Plotly.d3.csv("mortality.csv", plotski);
+            state = "lithuania";
             // plotly.d3.csv("morality.csv", plotski420);
             break;
         case 'Lithauania':
@@ -141,40 +145,37 @@ for (let x = 0; x < 6; x++) {
                 y: extension_y,
                 mode: "lines",
                 name: state + " child mortality prediction"
-            }
-        ]
-
-
-        switch (x) {
+            }]
+        switch (state) {
             case 'Estonia':
                 console.log(x + trace1);
                 Plotly.newPlot('vis1', trace1, layout1, config);
                 Plotly.newPlot('vis2', trace1, layout1, config);
-                state = "Finland";
+                
                 break;
             case 'Finland':
                 console.log(x + trace1);
                 Plotly.addTraces('vis1', trace1);
                 Plotly.addTraces('vis2', trace1);
-                state = "Latvia";
+                
                 break;
 
             case 'Latvia':
                 console.log(x + trace1);
                 Plotly.addTraces('vis1', trace1);
                 Plotly.addTraces('vis2', trace1);
-                state = "Russian";
+               
                 break;
             case 'Russian':
                 console.log(x + trace1);
                 Plotly.addTraces('vis1', trace1);
                 Plotly.addTraces('vis2', trace1);
-                state = "Baltic states";
+               
                 break;
             case 'Baltic states':
                 console.log(x + trace1);
                 Plotly.addTraces('vis2', trace1);
-                state = "lithuania";
+               
                 break;
             case 'Lithuania':
                 console.log(x + trace1);
@@ -183,17 +184,18 @@ for (let x = 0; x < 6; x++) {
         }
     }
 
-    var traceAnn = {
-        x: [1990, 1990],
-        y: [0, 60],
-        mode: 'lines+markers+text',
-        name: 'Lines, Markers and Text',
-        text: ['End of Soviet Occupation Of Baltic Sates'],
-        textposition: 'top',
-        type: 'scatter'
-    };
-    var annTrace = [traceAnn];
-    Plotly.addTraces('vis1', annTrace[0]);
+    // var traceAnn = {
+    //     x: [1990, 1990],
+    //     y: [0, 60],
+    //     mode: ['lines+markers+text'],
+    //     name: ['Lines, Markers and Text'],
+    //     text: ['End of Soviet Occupation Of Baltic Sates'],
+    //     textposition: ['top'],
+    //     type: ['scatter']
+    // }
+    // // var annTrace = [traceAnn]
+   // Plotly.addTraces('vis1', traceAnn);
+   // Plotly.addTraces('vis2', annTrace);
 }
 
 
