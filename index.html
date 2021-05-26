@@ -8,38 +8,68 @@
   <meta name="Cameron McKnight" content="name">
   <meta name="decription" content="data journalism about easten europe">
   <meta name="keywords" content="keywords,here">
-  <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css"> -->
   <link rel="stylesheet" href="stylesheet.css" type="text/css">
   <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js'></script>
-  <!-- scolling rellax effect from ("Parallax scrolling - CSS Animation", 2021) -->
-  <!-- <script src=c:\Users\camm\Documents\GitHub\InformationVis\rellax\rellax.min.js></script>
-  <script>
-    var rellax = new Rellax('.rellax');
-  </script>
-</head> -->
 
 <body>
-  <div class="grid-container">
-    <div class="header ">
-      <div class="rellax">
-        <h1>The Soviet impact on newborns</h1>
+  <div class="right">
+    <div class="side">
+      <div class="grid-container">
+        <div class="header" tag= "skrt">
+            <h1>The Soviet impact on Baltic states</h1>
+          
+        </div>
+        <div class="main">
+          <p class= id="content"> In 1990 the Soviet Union (USSR) dissolution after growing tension within the
+            state. The Soviet Union had previously occupied the Baltic nations (Estonia, Latvia, Lithuania), before the
+            second world war(1939,1940), and continuing after german troops retreated (1944-1991). Following
+            independence, the transition into a market economy, the Baltic states along with Russia went into a state of
+            recession. Child mortality increased after following a steady decrease since 1975.
+          </p>
+          <div class="vis1" id="vis1"></div>
+          <p>The transition to the market economy was a difficult transition for the Baltic states at first, "economic
+            stagnation due to the failure of the communist economic model (and subsequent severe economic decline in the
+            1990s exacerbated by forced restructuring of the economy)."(Mackenbach, Karanikolos & McKee, 2013). A marked
+            plateau is clearly visible displayed in the graph above from 1990-1995. Latvia's mortality trend stopped its
+            decline whereas, Lithuania had a marked increase converging with Estonia and following a similar trend to
+            that of Russia. This trend was short-lived with a sharp Pitch change and decrease in child mortality after
+            1995 and "After large GDP declines in the early 1990s, the second half of the decade saw rapid economic
+            growth, only interrupted by the fallouts from the Russian crisis in 1999."(Staehr, 2015). The Russian crisis
+            was also the same time child mortality started to plateau in baltic countries but decreasing more rapidly in
+            Russia.</p> 
+          <p>During this period there was still marked tension between the Baltic States and Russia. In September 1998
+            the Baltic states were finally free of external controlling entities and independent.
+          </p>
+          <div class="vis2" id="vis2"></div>
+          <p>Child mortality rates in Baltic nations are disproportionately higher than in neighbouring nations
+            such as Finland. Largely because "At the end of the 1980s, life expectancies started to fall as the
+            Gorbachev anti-alcohol campaign was abandoned, and in the early 1990s this deterioration accelerated because
+            of the severe socioeconomic crisis that followed the brutal transition to a market economy"(Jasilionis,
+            Meslé, Shkolnikov & Vallin, 2011, p.404). Remarkably after transitioning to market economy's, the Baltic
+            states were able to begin to prosper as they were no longer controlled by the motherland, Russia.</p>
+          
+          <br>
+          <div class="vis4" id="vis4"></div>
+          <p>Towards the end of 2010 morality was dropping around the world with advancements in technology and healthcare have enabled. the above chart contains a second line for each country providing further insight into the future of morality within the area. In 2017 when our data set ends the difference between Russia and the Baltics is 3.73% and if Russia continues its trend downwards compared to Latvia and Lithuania flattering curve, we could see Russia finally overtake one or more of the Baltic nations but 2025.</p><br>
+          <div class="vis3" id="vis3"></div>
+          <p>Life expectancy and child mortality have an inverse relationship with each other in the '90s and early
+            2000s. Life expectancy started to drop in post-Soviet nations after the dissolution of the USSR, at the same
+            time that child mortality rates were increasing. Interestingly in 1995, when life expectancy started to rise
+            again for baltic nations, it continued declining within Russia. in 1995 the gap between the baltic states
+            and Russia's child mortality was 6.1% and in 2000 it had risen to 9.12%. Life expectancy in 2001 within
+            Russia reached its lowest point of 64.9 years, Baltic nations being 70.7 years averaged. By 2005 the gap in
+            child mortality started to converge dropping down to 6.42% closer to the difference between the 4 nations in
+            1995. </p> 
+          <p>This trend was also followed by life expectancy which started trending upwards in all nations. In the early
+            2000s all 3 nations implemented a new healthcare system, "Estonia seems to have been the most successful and
+            Lithuania the least, with Latvia’s performance falling in the middle....The contrasting changes in life
+            expectancy at birth in the three Baltic countries over 2000–2007 are mainly explained by differences in the
+            dynamics of cardiovascular diseases, external causes of death and digestive diseases."(Jasilionis, Meslé,
+            Shkolnikov & Vallin, 2011)</p>
+            <p>Thankfully child mortality rates are nowhere near what they used to be but. Comparatively, you can see the obvious effect being under the influence and control of other countries for so long has had detrimental impacts, any area that was once controlled by the Soviet Union is damaged and it is clear the level of impact these events are having as the gap between them and other nations takes a long time to close.</p>
+        </div>
       </div>
-    </div>
-    <div class="main rellax">
-      <p class="header" id="content"> The Soviet union occupied the Baltic nations (Estonia, Latvia, lithuania) both
-        before the second world war(1939,1940), and continuing after german troops retreated (1944-1991). The impact on
-        the wellbeing of these nations is quite significant. Ever since 1991 when the Soviet union ceased occupation,
-        child mortality has dropped significantly. However, disproportionately compared to surrounding nations such as
-        Finland. Largely because "At the end of the 1980s, life expectancies started to fall as the Gorbachev
-        anti-alcohol campaign was abandoned, and in the early 1990s this deterioration accelerated because of the severe
-        socioeconomic crisis that followed the brutal transition to a market economy"(Jasilionis, Meslé, Shkolnikov &
-        Vallin, 2011, p.404), remarkably after transitioning to market economy's, the Baltic states were able to begin
-        to prosper as they were no longer controlled by the mother land.
-      </p>
-      <div class="vis1" id="vis1"></div>
-      <div class="vis2" id="vis2"></div>
-      <div class="vis3" id="vis3"></div>
     </div>
   </div>
   </div>
@@ -47,3 +77,11 @@
 </body>
 
 </html>
+<!-- appendix
+Jasilionis, D., Meslé, F., Shkolnikov, V., & Vallin, J. (2011). Recent Life Expectancy Divergence in Baltic Countries. European Journal Of Population / Revue Européenne De Démographie, 27(4), 403-431. doi: 10.1007/s10680-011-9243-0
+
+Jasilionis, D., Meslé, F., Shkolnikov, V., & Vallin, J. (2011). Recent Life Expectancy Divergence in Baltic Countries. European Journal Of Population / Revue Européenne De Démographie, 27(4), 403-431. doi: 10.1007/s10680-011-9243-0
+
+Mackenbach, J., Karanikolos, M., & McKee, M. (2013). The unequal health of Europeans: successes and failures of policies. The Lancet, 381(9872), 1125-1134. doi: 10.1016/s0140-6736(12)62082-0
+
+Staehr, K. (2015). Economic Growth and Convergence in the Baltic States: Caught in a Middle-Income Trap?. Intereconomics, 50(5), 274-280. doi: 10.1007/s10272-015-0551-1 -->
